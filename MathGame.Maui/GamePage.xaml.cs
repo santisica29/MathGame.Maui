@@ -76,13 +76,9 @@ public partial class GamePage : ContentPage
 		AnswerEntry.Text = "";
 
 		if (gamesLeft > 0)
-		{
 			CreateNewQuestion();
-		}
 		else
-		{
 			GameOver();
-		}
     }
 
     private void GameOver()
@@ -104,11 +100,29 @@ public partial class GamePage : ContentPage
 
 	private void OnBackToMenu(object sender, EventArgs e)
 	{
-		Navigation.PushAsync(new MainPage());
+		// PopAsync is better because it removes the current page from the navigation stack
+		// PushAsync creates a new instance on top of the existing one
+		Navigation.PopAsync();
 	}
 
 	private void OnNewGame(object sender, EventArgs e)
 	{
-		Navigation.PushAsync(new GamePage(GameType));
+		Reset();
+		CreateNewQuestion();
 	}
+
+    private void Reset()
+    {
+        score = 0;
+		firstNumber = 0;
+		secondNumber = 0;
+		gamesLeft = 0;
+
+        QuestionArea.IsVisible = true;
+        BackToMenuBtn.IsVisible = false;
+        NewGameBtn.IsVisible = false;
+
+		AnswerLabel.Text = "";
+        GameOverLabel.Text = "";
+    }
 }
