@@ -16,9 +16,7 @@
 
         private void OnViewPreviousGamesChosen(object sender, EventArgs e)
         {
-
             Navigation.PushAsync(new PreviousGames());
-
         }
     }
 }
