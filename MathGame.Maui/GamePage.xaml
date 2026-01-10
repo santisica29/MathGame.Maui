@@ -38,26 +38,30 @@
                 FontSize="32"/>
         </VerticalStackLayout>
 
+
         <Label
-            x:Name="GameOverLabel"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"
-            FontSize="32"/>
+x:Name="GameOverLabel"
+VerticalOptions="Center"
+HorizontalOptions="Center"
+FontSize="32"/>
+        <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+         
+            <Button
+    IsVisible="False"
+    x:Name="BackToMenuBtn"
+    Text="Back To Menu"
+    Clicked="OnBackToMenu"
+    HorizontalOptions="Center"
+    FontSize="20"/>
 
-        <Button
-            IsVisible="False"
-            x:Name="BackToMenuBtn"
-            Text="Back To Menu"
-            Clicked="OnBackToMenu"
-            HorizontalOptions="Center"
-            FontSize="20"/>
-
-        <Button
-            IsVisible="False"
-            x:Name="NewGameBtn"
-            Text="New Game"
-            Clicked="OnNewGame"
-            HorizontalOptions="Center"
-            FontSize="20"/>
+            <Button
+    IsVisible="False"
+    x:Name="NewGameBtn"
+    Text="New Game"
+    Clicked="OnNewGame"
+    HorizontalOptions="Center"
+    FontSize="20"/>
+        </HorizontalStackLayout>
+        
     </VerticalStackLayout>
 </ContentPage>

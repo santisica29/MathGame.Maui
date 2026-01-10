@@ -11,7 +11,7 @@ public partial class PreviousGames : ContentPage
 
 	private void OnDelete(object sender, EventArgs e)
 	{
-		Button btn = (Button)sender;
+		ImageButton btn = (ImageButton)sender;
 		int gameId = (int)btn.CommandParameter;
 
 		App.GameRepository.Delete(gameId);

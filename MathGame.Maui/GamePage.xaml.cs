@@ -22,14 +22,14 @@ public partial class GamePage : ContentPage
 
 	private void CreateNewQuestion()
 	{
-		var gameOperand = GameType switch
-		{
-			"Addition" => "+",
-			"Subtraction" => "-",
-			"Multiplication" => "*",
-			"Division" => "/",
-			_ => ""
-		};
+		//var gameOperand = GameType switch
+		//{
+		//	"Addition" => "+",
+		//	"Subtraction" => "-",
+		//	"Multiplication" => "*",
+		//	"Division" => "/",
+		//	_ => ""
+		//};
 
 		var random = new Random();
 
@@ -45,27 +45,29 @@ public partial class GamePage : ContentPage
             }
         }
 
-        QuestionLabel.Text = $"{firstNumber} {gameOperand} {secondNumber}?";
+        QuestionLabel.Text = $"{firstNumber} {GameType} {secondNumber}?";
 
     }
 
 	private void OnAnswerSubmitted(object sender, EventArgs e)
 	{
+
 		var answer = Int32.Parse(AnswerEntry.Text);
+	
 		var isCorrect = false;
 
 		switch (GameType)
 		{
-			case "Addition":
+			case "+":
 				isCorrect = answer == firstNumber + secondNumber;
 				break;
-			case "Subtraction":
+			case "-":
 				isCorrect = answer == firstNumber - secondNumber;
 				break;
-			case "Multiplication":
+			case "*":
 				isCorrect = answer == firstNumber * secondNumber;
 				break;
-			case "Division":
+			case "÷":
 				isCorrect = answer == firstNumber / secondNumber;
 				break;
 			default:
@@ -87,11 +89,10 @@ public partial class GamePage : ContentPage
     {
 		GameOperation gameOperation = GameType switch
 		{
-			"Addition" => GameOperation.Addition,
-			"Subtraction" => GameOperation.Subtraction,
-			"Multiplication" => GameOperation.Multiplication,
-			"Division" => GameOperation.Division,
-			_ => GameOperation.Division
+			"+" => GameOperation.Addition,
+			"-" => GameOperation.Subtraction,
+			"x" => GameOperation.Multiplication,
+            "÷" => GameOperation.Division
 		};
 
 		QuestionArea.IsVisible = false;
@@ -135,7 +136,7 @@ public partial class GamePage : ContentPage
         score = 0;
 		firstNumber = 0;
 		secondNumber = 0;
-		gamesLeft = 0;
+		gamesLeft = totalQuestions;
 
         QuestionArea.IsVisible = true;
         BackToMenuBtn.IsVisible = false;
