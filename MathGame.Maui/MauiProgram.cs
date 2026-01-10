@@ -12,8 +12,7 @@ namespace MathGame.Maui
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Orbitron.ttf","Orbitron");
                 });
 
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "game.db");

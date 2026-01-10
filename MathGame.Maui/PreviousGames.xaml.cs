@@ -5,11 +5,23 @@ public partial class PreviousGames : ContentPage
 	public PreviousGames()
 	{
 		InitializeComponent();
-		App.GameRepository.GetAllGames();
-		gamesList.ItemsSource = App.GameRepository.GetAllGames();
-	}
 
-	private void OnDelete(object sender, EventArgs e)
+        var games = App.GameRepository.GetAllGames().ToList();
+        gamesList.ItemsSource = games;
+
+        DataDisplaySection.IsVisible = games.Count > 0;
+
+        //var games = App.GameRepository.GetAllGames();
+        //gamesList.ItemsSource = games.ToList();
+
+        //if (gamesList.ItemsSource.Count > 0)
+        //      {
+        //	DataDisplaySection.IsVisible = true;
+        //}
+
+    }
+
+    private void OnDelete(object sender, EventArgs e)
 	{
 		ImageButton btn = (ImageButton)sender;
 		int gameId = (int)btn.CommandParameter;

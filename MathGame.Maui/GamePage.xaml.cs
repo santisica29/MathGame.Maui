@@ -22,21 +22,12 @@ public partial class GamePage : ContentPage
 
 	private void CreateNewQuestion()
 	{
-		//var gameOperand = GameType switch
-		//{
-		//	"Addition" => "+",
-		//	"Subtraction" => "-",
-		//	"Multiplication" => "*",
-		//	"Division" => "/",
-		//	_ => ""
-		//};
-
 		var random = new Random();
 
-		firstNumber = GameType != "Division" ? random.Next(1, 9) : random.Next(1, 99);
-        secondNumber = GameType != "Division" ? random.Next(1, 9) : random.Next(1, 99);
+		firstNumber = GameType != "÷" ? random.Next(1, 9) : random.Next(1, 99);
+        secondNumber = GameType != "÷" ? random.Next(1, 9) : random.Next(1, 99);
 
-		if (GameType == "Division")
+		if (GameType == "÷")
 		{
             while (firstNumber < secondNumber || firstNumber % secondNumber != 0)
             {
@@ -51,7 +42,6 @@ public partial class GamePage : ContentPage
 
 	private void OnAnswerSubmitted(object sender, EventArgs e)
 	{
-
 		var answer = Int32.Parse(AnswerEntry.Text);
 	
 		var isCorrect = false;
