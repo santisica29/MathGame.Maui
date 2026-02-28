@@ -15,7 +15,7 @@ public class GameRepository
 
     public void Init()
     {
-        conn = new SQLiteConnection(_dbPath);
+        using var conn = new SQLiteConnection(_dbPath);
         conn.CreateTable<Game>();
     }
 
