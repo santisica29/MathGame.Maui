@@ -42,9 +42,18 @@ public partial class GamePage : ContentPage
 
 	private void OnAnswerSubmitted(object sender, EventArgs e)
 	{
-		var answer = Int32.Parse(AnswerEntry.Text);
+		var response = AnswerEntry.Text;
+
+		while (!Int32.TryParse(AnswerEntry.Text, out _))
+		{
+			AnswerLabel.Text = "You need to enter a number";
+            Navigation.PopAsync();
+			return;
+        }
 	
 		var isCorrect = false;
+
+		var answer = Int32.Parse(response);
 
 		switch (GameType)
 		{
